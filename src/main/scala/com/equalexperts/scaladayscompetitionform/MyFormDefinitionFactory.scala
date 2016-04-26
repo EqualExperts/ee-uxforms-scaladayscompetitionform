@@ -52,7 +52,10 @@ object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader
       section(
         "firstSectionMessages",
 
-        inputText("elementName", "elementName.label" -> "This is the question text that will appear in the form", required)
+        inputText("name", "name.label" -> "Name", required),
+        email("email", "email.label" -> "Email", required ++ validEmail()),
+        inputText("twitter", "twitter.label" -> "Twitter", maxLength(15)),
+        inputText("github", "github.label" -> "Github", noConstraints)
       )
     )
 
