@@ -14,9 +14,9 @@ lazy val root = (project in file("."))
 
 scalaVersion := "2.11.7"
 
-organization := "com.equalexperts" // TODO: Change this to be your organisation
+organization := "com.equalexperts"
 
-name := "scaladayscompetitionform" // TODO: Change this to be the path on which your form will be deployed
+name := "scaladayscompetitionform"
 
 test <<= (test in Test) dependsOn (OsgiKeys.bundle)
 
