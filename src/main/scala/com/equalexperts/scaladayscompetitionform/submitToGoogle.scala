@@ -10,10 +10,10 @@ object submitToGoogle {
 
     new DateAwareGeneralConverter() {
       override def columnHeadings: (FormDefinition) => Seq[String] =
-        super.columnHeadings(_) :+ "timestamp"
+        super.columnHeadings(_) :+ "timestamp" :+ "xForwardedFor"
 
       override def columnValues: (FormData, FormDefinition, RequestInfo) => Seq[Seq[String]] =
-        super.columnValues(_, _, _).map(_ :+ Instant.now().toString)
+        (data, formDef, rInfo) => super.columnValues(data, formDef, rInfo).map(_ :+ Instant.now().toString :+ rInfo.headers.find(_._1 == "X-Forwarded-For").map(_._2).getOrElse(""))
 
     }.convert(data, formDef, requestInfo)
   }
