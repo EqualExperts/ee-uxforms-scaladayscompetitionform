@@ -25,7 +25,8 @@ testOptions += Tests.Argument(TestFrameworks.JUnit, "-q", "-v")
 libraryDependencies ++= {
   Seq(
     "com.uxforms" %% "uxforms-dsl" % "1.4.2",
-    "com.uxforms" %% "test" % "0.7.3" % Test,
+    "com.uxforms" %% "uxforms-google-spreadsheets" % "1.1.0",
+    "com.uxforms" %% "test" % "0.7.4" % Test,
     "org.scalatest" %% "scalatest" % "2.2.6" % Test,
     "com.novocode" % "junit-interface" % "0.11" % Test
   )
