@@ -20,9 +20,8 @@ object submitToGoogle {
 
   def apply()(implicit classLoader: ClassLoader): GoogleSpreadsheetSubmission =
     new GoogleSpreadsheetSubmission(
-      classLoader.getResourceAsStream("uxforms-service-account-key.json"),
-      "competitionentryform",
+      classLoader.getResourceAsStream("uxforms-service-berlin-account-key.json"),
+      "berlin_comp_entry_form",
       convertFormData
     )
-
 }
