@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "scaladays-competition-berlin",
+  "private_key_id": "83d501face48df35a157602858f1673d72f1dc04",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCWZ45SeMuqnxKK\nzJW7oSSvMgAnKymvFJgb/rH/MJ9R1QeuKPC9Eo8EMvRI3BPhO/ObaQX+Y4x94xWy\nmtSZZ3E6JKVI2hjYuFyR9OiGUS2/97DEviymgsOwj8BK++70bBKfY2wN+3Edhr9M\nYbQr/4IfZy5MnxKI8OHEUrW7+Kz68gWenLg882GFiwX+raUgcaovPGwEKROYlk7/\ncavtdsYDJNCW7QGTYxb/Fr3Vo7LzD9F+b6xmlRGTqGQAP3gEKF1OMjzrRUrTMFIZ\nl4tZ+bhGNQbbypkJEyJ9rUW/DVhsByuu4roQKgGYycyS/MWNmhh7lzl5NXkNN819\nEocQlCufAgMBAAECggEBAJBqvu3Rrz4Vn+hGqT+Qa3kNubfiahQC4kt/M8qlFVWu\nB8Hi7cWenFSb2JRdPXl352HCZk7tp2j5M0xb/ueNu9rodQyO3my6GajMULkoGZXK\nb6F6OcVoqh5O6YUWg0uOuhLxlD+Yv/Rp/iWJa0cUAA3HNV29ID79jMrF4FqtXOtX\nHayS63BRW8mRjH1gdsblDtUJRN0LNXamF/75DrpZ2WlO7sAUi8M3GRD+s+5FrDSQ\nUIZ4I5tRc4r3mKLW4uIYATkOtWmRnwBf2QTsg9b3f6vv34p9DHdFLarhaEMAdUqk\neWmwy3fnVCcLPd/smeGA9k+Gjlot8h/qdFXL1SV+/wECgYEA2ntgaUW4nwfV5w3b\n6e9Lb5rXS+m4I8t4SBPvRNrkKgVyqANmMl/Z5hRY6pEReDrtzcz/bHiGbHAYZhdx\nVwSJr6oCkVWFV1N78gt6vOuD4F2TLAEWQPHHCeuAe9nEHJaGZVNNfb8VbaM/ccra\nnVkNWZIKzqNzmQJKkndbafQeA6cCgYEAsDtyXam4Va5GkqzxSHkXTMONcOtyGSBB\ncQ/Cp/QkAXQw/JRLVXNxYhefRyQNVmf0sN7mvPRJCSHTJnu3QknHR/dOh33EmlEr\nc8IQiKP7xatiWF8L/g246CTDEbzDsyoUpLaq9GvzhzVEKtR1PMgQt44cA9v0ucc/\nKXJqU+lp90kCgYA61+3gjJGr611WDKqFOBj2JxsDbCBXK67qosvXnKjFFJCL5dZ5\njM1QJXzJOGcfHaf8vNCyc0epHwvDO18gU62NrVlhsUnneimwyBy3kysCm9FOkcBf\nn36/EjmZoc4q8POjiKsfSf7Id6ZXzI3SwTBSRn44p1c0B6T0C8eIIuKOkwKBgAyz\nTAup9oneNGHPqtfROjejBCd2IFPlOjIes6WM96dPK1SYj1FKL4qlLypeU8O9XCn+\n9lv5suXAlUn5snxJet4Z2YP0MV35qYr/GlfukW9uaXj66I9Xh9LbC1/U3bmkt7Yj\nH/DbcsJ0uUPo6cYGmQXRbP1uNZXJ4ShogXcopCVZAoGBAK2MRFGoy/0QcTNQZieU\nxJb3P6o16pXOiyG8Sa2Dhj03qYzRSszVr6GIL07dLAGtFIjBbhO+0vn+7+B3LZ3R\nz+ES1FCXTs/9vam+k/+c4vbad+JYSInNzOCcE1sBA01x5bjW/PjFz9wykgoiOUwZ\npCN/S8KDtXrIPqQuLdBA0/cP\n-----END PRIVATE KEY-----\n",
+  "client_email": "scaladays-berlin@scaladays-competition-berlin.iam.gserviceaccount.com",
+  "client_id": "112936676961987357363",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/scaladays-berlin%40scaladays-competition-berlin.iam.gserviceaccount.com"
+}
