@@ -19,14 +19,14 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
 
     "should include the client's IP from the X-Forwarded-For HTTP Header" in {
       val headers = baseHeaders :+ "X-Forwarded-For" -> "5.148.6.178"
-      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo(Map.empty, headers))
+      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, headers, ""))
 
       result.columnNames should contain("xForwardedFor")
       result.data.head should contain("5.148.6.178")
     }
 
     "should leave the xForwardedFor column blank if the X-Forwarded-For HTTP header is not present" in {
-      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo(Map.empty, baseHeaders))
+      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, baseHeaders, ""))
 
       result.columnNames should contain("xForwardedFor")
       result.data.head.last shouldBe ""
@@ -34,7 +34,7 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
 
     "should include the timestamp of the submission in ISO8601 format" in {
       withFrozenTime() { instant =>
-        val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo(Map.empty, Seq.empty))
+        val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, ""))
         result.columnNames should contain("timestamp")
         val timestampColumnIndex = formDef.flattenWidgets.length
         result.data.head.lift(timestampColumnIndex).value shouldBe instant.toString

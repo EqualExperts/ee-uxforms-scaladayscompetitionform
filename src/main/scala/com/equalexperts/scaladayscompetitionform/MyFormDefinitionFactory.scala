@@ -47,7 +47,11 @@ object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader
 
       completedPage("completedMessages"),
 
-      Set(submitToGoogle()),
+      Seq.empty,
+
+      Seq(submitToGoogle()),
+
+      alwaysAllowAccess,
 
       section(
         "firstSectionMessages",

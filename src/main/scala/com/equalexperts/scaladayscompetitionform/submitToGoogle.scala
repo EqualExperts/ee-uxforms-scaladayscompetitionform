@@ -1,6 +1,6 @@
 package com.equalexperts.scaladayscompetitionform
 
-import com.uxforms.domain.{FormData, FormDefinition, RequestInfo, Submission}
+import com.uxforms.domain.{FormData, FormDefinition, RequestInfo}
 import com.uxforms.submission.googlespreadsheet.{DateAwareGeneralConverter, GoogleSpreadsheetSubmission, SpreadsheetData}
 import org.joda.time.Instant
 
