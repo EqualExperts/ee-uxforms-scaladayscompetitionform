@@ -13,15 +13,15 @@ object submitToGoogle {
         super.columnHeadings(_) :+ "timestamp" :+ "xForwardedFor"
 
       override def columnValues: (FormData, FormDefinition, RequestInfo) => Seq[Seq[String]] =
-        (data, formDef, rInfo) => super.columnValues(data, formDef, rInfo).map(_ :+ Instant.now().toString :+ rInfo.headers.find(_._1 == "X-Forwarded-For").map(_._2).getOrElse(""))
+        (data, formDef, rInfo) => super.columnValues(data, formDef, rInfo).map(_ :+ Instant.now().toString :+ rInfo.remoteAddress)
 
     }.convert(data, formDef, requestInfo)
   }
 
   def apply()(implicit classLoader: ClassLoader): GoogleSpreadsheetSubmission =
     new GoogleSpreadsheetSubmission(
-      classLoader.getResourceAsStream("uxforms-service-berlin-account-key.json"),
-      "berlin_comp_entry_form",
+      classLoader.getResourceAsStream("uxforms-service-account-key.json"),
+      "Agile Cymru Entry Form",
       convertFormData
     )
 }

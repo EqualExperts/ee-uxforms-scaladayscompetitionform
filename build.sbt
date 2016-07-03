@@ -16,7 +16,7 @@ scalaVersion := "2.11.7"
 
 organization := "com.equalexperts"
 
-name := "scaladayscompetitionform"
+name := "equalexperts-competitionform"
 
 test <<= (test in Test) dependsOn (OsgiKeys.bundle)
 

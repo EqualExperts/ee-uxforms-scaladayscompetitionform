@@ -18,8 +18,7 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
     )
 
     "should include the client's IP from the X-Forwarded-For HTTP Header" in {
-      val headers = baseHeaders :+ "X-Forwarded-For" -> "5.148.6.178"
-      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, headers, ""))
+      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, "5.148.6.178"))
 
       result.columnNames should contain("xForwardedFor")
       result.data.head should contain("5.148.6.178")
