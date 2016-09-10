@@ -1,11 +1,14 @@
 package com.equalexperts.scaladayscompetitionform
 
-import java.util.Locale
+import java.util.{Locale, UUID}
 
-import com.uxforms.domain.{FormDefinition, RequestInfo}
+import com.uxforms.domain.{FormData, FormDefinition, RequestInfo}
+import com.uxforms.dsl.Form
 import org.joda.time.{DateTimeUtils, Instant}
 import org.scalatest.{FreeSpec, Matchers, OptionValues}
 import play.api.libs.json.Json
+
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
 
@@ -18,14 +21,14 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
     )
 
     "should include the client's IP from the X-Forwarded-For HTTP Header" in {
-      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, "5.148.6.178"))
+      val result = submitToGoogle.convertFormData(form, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, "5.148.6.178"))
 
       result.columnNames should contain("xForwardedFor")
       result.data.head should contain("5.148.6.178")
     }
 
     "should leave the xForwardedFor column blank if the X-Forwarded-For HTTP header is not present" in {
-      val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, baseHeaders, ""))
+      val result = submitToGoogle.convertFormData(form, RequestInfo("", "", Map.empty, Map.empty, baseHeaders, ""))
 
       result.columnNames should contain("xForwardedFor")
       result.data.head.last shouldBe ""
@@ -33,7 +36,7 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
 
     "should include the timestamp of the submission in ISO8601 format" in {
       withFrozenTime() { instant =>
-        val result = submitToGoogle.convertFormData(formData, formDef, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, ""))
+        val result = submitToGoogle.convertFormData(form, RequestInfo("", "", Map.empty, Map.empty, Seq.empty, ""))
         result.columnNames should contain("timestamp")
         val timestampColumnIndex = formDef.flattenWidgets.length
         result.data.head.lift(timestampColumnIndex).value shouldBe instant.toString
@@ -49,8 +52,10 @@ class submitToGoogleSpec extends FreeSpec with Matchers with OptionValues {
     DateTimeUtils.setCurrentMillisSystem()
   }
 
-  private def formDef: FormDefinition = MyFormDefinitionFactory.formDefinition(new Locale("en", "GB"))
+  private val formDef: FormDefinition = MyFormDefinitionFactory.formDefinition(new Locale("en", "GB"))
 
-  private val formData = Json.obj("name" -> "Bob Smith", "email" -> "bob@example.com", "phone" -> "123561823", "twitter" -> "bsmith", "github" -> "bsmith")
+  private val formData = FormData(Json.obj("name" -> "Bob Smith", "email" -> "bob@example.com", "phone" -> "123561823", "twitter" -> "bsmith", "github" -> "bsmith"))
+
+  private def form = Form(formData, formDef, UUID.randomUUID(), Instant.now)
 
 }

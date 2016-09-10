@@ -3,8 +3,16 @@ package com.equalexperts.scaladayscompetitionform
 import java.util.Locale
 
 import com.equalexperts.scaladayscompetitionform.build.MyFormDefinitionBuildInfo
+import com.uxforms.domain.constraint.MaxLength._
+import com.uxforms.domain.constraint.Required._
+import com.uxforms.domain.constraint.ValidEmailAddress._
 import com.uxforms.domain.{FormDefinition, FormDefinitionFactory, ResourceBundleMessages}
-import com.uxforms.dsl.helpers.All._
+import com.uxforms.dsl.containers.mustache.Section.section
+import com.uxforms.dsl.helpers.ConstraintHelper.noConstraints
+import com.uxforms.dsl.helpers.FormDefinitionHelper._
+import com.uxforms.dsl.widgets.Input._
+
+import scala.concurrent.ExecutionContext
 import scala.concurrent.duration._
 
 object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader {
@@ -26,7 +34,7 @@ object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader
   /**
     * Factory method for instantiating your form definition.
     */
-  override def formDefinition(requestedLocale: Locale): FormDefinition = {
+  override def formDefinition(requestedLocale: Locale)(implicit ec: ExecutionContext): FormDefinition = {
 
     /**
       * Resolves the locale requested by the user from a combination of their HTTP headers,
@@ -45,7 +53,9 @@ object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader
 
       1 day,
 
-      completedPage("completedMessages"),
+      completedSection("completedMessages"),
+
+      Seq.empty,
 
       Seq.empty,
 
