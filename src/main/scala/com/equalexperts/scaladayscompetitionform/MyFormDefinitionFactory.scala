@@ -6,7 +6,7 @@ import com.equalexperts.scaladayscompetitionform.build.MyFormDefinitionBuildInfo
 import com.uxforms.domain.constraint.MaxLength._
 import com.uxforms.domain.constraint.Required._
 import com.uxforms.domain.constraint.ValidEmailAddress._
-import com.uxforms.domain.{FormDefinition, FormDefinitionFactory, ResourceBundleMessages}
+import com.uxforms.domain.{FormDefinition, FormDefinitionFactory, Messages, ResourceBundleMessages}
 import com.uxforms.dsl.containers.mustache.Section.section
 import com.uxforms.dsl.helpers.ConstraintHelper.noConstraints
 import com.uxforms.dsl.helpers.FormDefinitionHelper._
@@ -64,7 +64,7 @@ object MyFormDefinitionFactory extends FormDefinitionFactory with TemplateLoader
       alwaysAllowAccess,
 
       section(
-        "firstSectionMessages",
+        Messages.empty,
 
         inputText("name", "name.label" -> "Name", required),
         email("email", "email.label" -> "Email", required ++ validEmail()),
