@@ -7,6 +7,7 @@ import org.joda.time.Instant
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.{ExecutionContext, Future}
+import scala.util.control.NonFatal
 
 object submitToGoogle {
 
@@ -27,13 +28,13 @@ object submitToGoogle {
   def apply()(implicit classLoader: ClassLoader): GoogleSpreadsheetSubmission =
     new GoogleSpreadsheetSubmission(
       classLoader.getResourceAsStream("uxforms-service-account-key.json"),
-      "SwanseaCon Entry Form",
+      "DevSecCon Entry Form",
       convertFormData
     ) {
       override def transform(form: Form, requestInfo: RequestInfo)(implicit ec: ExecutionContext): Future[DataTransformationResult] = {
         val res = super.transform(form, requestInfo)
         res.onFailure {
-          case t: Throwable => logger.error("unable to submit to google", t)
+          case NonFatal(t) => logger.error("unable to submit to google", t)
         }
         res
       }
