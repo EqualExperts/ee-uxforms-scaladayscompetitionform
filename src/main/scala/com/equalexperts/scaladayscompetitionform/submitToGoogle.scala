@@ -28,7 +28,7 @@ object submitToGoogle {
   def apply()(implicit classLoader: ClassLoader): GoogleSpreadsheetSubmission =
     new GoogleSpreadsheetSubmission(
       classLoader.getResourceAsStream("uxforms-service-account-key.json"),
-      "DevSecCon Entry Form",
+      "AITC Bristol Entry Form",
       convertFormData
     ) {
       override def transform(form: Form, requestInfo: RequestInfo)(implicit ec: ExecutionContext): Future[DataTransformationResult] = {
